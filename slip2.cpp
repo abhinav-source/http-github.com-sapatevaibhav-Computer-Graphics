@@ -15,28 +15,73 @@ point p1, p2;
 
 void bresenham(point p1, point p2)
 {
-    double dx = p2.x - p1.x;
-    double dy = p2.y - p1.y;
-    double slope = dy / dx;
-
-    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-    double xinc = dx / steps;
-    double yinc = dy / steps;
-
-    double x = p1.x;
-    double y = p1.y;
+    int x_2 = p2.x, x_1 = p1.x, y_1 = p1.y, y_2 = p2.y;
+    int dx = abs(x_2 - x_1);
+    int dy = abs(y_2 - y_1);
+    int x = x_1;
+    int y = y_1;
+    int incx = (x_2 > x_1) ? 1 : -1;
+    int incy = (y_2 > y_1) ? 1 : -1;
 
     glBegin(GL_POINTS);
-    for (int i = 0; i <= steps; ++i)
-    {
-        if (i % 10 < 5)
-        {
-            glVertex2f(x, y);
-        }
-        x += xinc;
-        y += yinc;
-    }
+    glVertex2i(x, y);
     glEnd();
+
+    if (dx > dy)
+    {
+        int cnt = 1;
+        int p = 2 * dy - dx;
+        for (int i = 0; i < dx; i++)
+        {
+            if (p >= 0)
+            {
+                y += incy;
+                p -= 2 * dx;
+            }
+            x += incx;
+            p += 2 * dy;
+
+            if (cnt <= 10)
+            {
+                glBegin(GL_POINTS);
+                glVertex2i(x, y);
+                glEnd();
+            }
+            cnt++;
+            if (cnt == 15)
+            {
+                cnt = 1;
+            }
+        }
+    }
+    else
+    {
+        int cnt = 1;
+        int p = 2 * dx - dy;
+        for (int i = 0; i < dy; i++)
+        {
+            if (p >= 0)
+            {
+                x += incx;
+                p -= 2 * dy;
+            }
+            y += incy;
+            p += 2 * dx;
+
+            if (cnt <= 10)
+            {
+                glBegin(GL_POINTS);
+                glVertex2i(x, y);
+                glEnd();
+            }
+            cnt++;
+            if (cnt == 15)
+            {
+                cnt = 1;
+            }
+        }
+    }
+
     glFlush();
 }
 
