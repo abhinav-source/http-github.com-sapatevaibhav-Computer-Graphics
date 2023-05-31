@@ -58,7 +58,7 @@ void draw_window()
 
 void mymouse(int button, int state, int x, int y)
 {
-    glColor3f(0, 0, 0);
+    glColor3f(1, 0, 1);
     if (state == GLUT_DOWN && flag == 0)
     {
         u1 = x;
