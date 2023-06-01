@@ -21,6 +21,8 @@ void init()
     glColor3f(0, 0, 0);
 }
 
+void disp() {}
+
 code get_code(int u, int v)
 {
     code c = {0, 0, 0, 0};
@@ -188,6 +190,7 @@ int main(int argc, char **argv)
     draw_window();
     glutMouseFunc(mymouse);
     glutKeyboardFunc(mykey);
+    glutDisplayFunc(disp);
     glutMainLoop();
 
     return 0;
