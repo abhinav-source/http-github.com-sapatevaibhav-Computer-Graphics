@@ -1,5 +1,7 @@
 // Implement Bresenham Line drawing algorithm to draw dashed line. Divide the screen in four quadrants with center as (0,0).
 
+// If you are encountering stray '@' in program retype getUserInput() function.
+
 #include <iostream>
 #include <GL/glut.h>
 using namespace std;
