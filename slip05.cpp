@@ -23,20 +23,21 @@ void drawPoints(int x, int y)
 
 void drawCircle()
 {
-    float d = 3 - 2 * r;
     int x = 0;
     int y = r;
+    int d = 3 - 2 * r;
 
-    while (x < y)
+    while (x <= y)
     {
         drawPoints(x, y);
-        if (d < 0)
+
+        if (d <= 0)
         {
-            d += 4 * x + 6;
+            d = d + 4 * x + 6;
         }
         else
         {
-            d += 4 * (x - y) + 10;
+            d = d + 4 * (x - y) + 10;
             y--;
         }
         x++;
