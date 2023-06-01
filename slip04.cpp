@@ -5,23 +5,18 @@
 #include <GL/glut.h>
 using namespace std;
 
-// GLOBAL VARIABLES
 int xf1, yf1, xf2, yf2;
 bool selected = false;
 int l;
 
-// FUNCTION DEFINITIONS
-
-// plot functin to plot a pixel
 void plot(int x, int y)
 {
     glBegin(GL_POINTS);
     glVertex2i(x, y);
     glEnd();
     glFlush();
-} // end of plot function
+}
 
-// bresenham line drawing algorihm
 void bresenham(int x1, int y1, int x2, int y2)
 {
     int x = x1;
@@ -52,7 +47,7 @@ void bresenham(int x1, int y1, int x2, int y2)
             p = p + 2 * dy;
             plot(x, y);
         }
-    } // end of if
+    }
 
     else
     {
@@ -72,10 +67,8 @@ void bresenham(int x1, int y1, int x2, int y2)
     }
 
     glFlush();
+}
 
-} // end of bresenham function
-
-// draw staircase pattern
 void draw_pattern()
 {
 
@@ -99,10 +92,8 @@ void draw_pattern()
         x = x + b;
         y = y + h;
     }
+}
 
-} // end of draw pattern functio
-
-// intialize function to initialize buffer
 void init()
 {
     glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -110,17 +101,14 @@ void init()
     glLoadIdentity();
     gluOrtho2D(0, 640, 0, 480);
     glFlush();
-} // end of init function
+}
 
-// display function
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glFlush();
+}
 
-} // end of display function
-
-// mouse click function
 void mouse(int button, int state, int x, int y)
 {
     if (button == GLUT_LEFT_BUTTON)
@@ -136,29 +124,25 @@ void mouse(int button, int state, int x, int y)
                 plot(xf1, yf1);
                 glPointSize(2);
                 draw_pattern();
-
-            } // end of if select
-
-        } // end of if state
-    }     // end of if button
+            }
+        }
+    }
 
     glFlush();
-} // end of mouse function
+}
 
-// main function
 int main(int argc, char **argv)
 {
     cout << "\nEnter lenght :: ";
     cin >> l;
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // intitializng diplay mode
-    glutInitWindowSize(640, 480);                // initializing window size
-    glutInitWindowPosition(100, 100);            // initializing window position
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(640, 480);
+    glutInitWindowPosition(100, 100);
     glutCreateWindow("Staircase");
     init();
     glutDisplayFunc(display);
     glutMouseFunc(mouse);
     glutMainLoop();
     return 0;
-
-} // end of main function
+}
