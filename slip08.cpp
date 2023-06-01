@@ -88,7 +88,7 @@ int BottomCliping(int e)
             }
         }
     }
-    cout << "k = " << k;
+
     for (int i = 0; i < 10; i++)
     {
         points[i][0] = 0;
@@ -96,8 +96,7 @@ int BottomCliping(int e)
     }
     for (int i = 0; i < k; i++)
     {
-        cout << "\n"
-             << t[i][0] << " " << t[i][1];
+
         points[i][0] = t[i][0];
         points[i][1] = t[i][1];
     }
@@ -157,7 +156,7 @@ int TopCliping(int e)
             }
         }
     }
-    cout << "k = " << k;
+
     for (int i = 0; i < 10; i++)
     {
         points[i][0] = 0;
@@ -165,8 +164,7 @@ int TopCliping(int e)
     }
     for (int i = 0; i < k; i++)
     {
-        cout << "\n"
-             << t[i][0] << " " << t[i][1];
+
         points[i][0] = t[i][0];
         points[i][1] = t[i][1];
     }
@@ -185,11 +183,10 @@ int leftCliping(int e)
         {
             if (points[i + 1][0] < wxmin)
             {
-                cout << "\n Test 1";
             }
             else if (points[i + 1][0] > wxmin)
             {
-                cout << "\n Test 2";
+
                 float x1, x2;
                 float y1, y2;
                 x1 = points[i][0];
@@ -228,7 +225,7 @@ int leftCliping(int e)
             }
         }
     }
-    cout << "k = " << k;
+
     for (int i = 0; i < 10; i++)
     {
         points[i][0] = 0;
@@ -236,8 +233,7 @@ int leftCliping(int e)
     }
     for (int i = 0; i < k; i++)
     {
-        cout << "\n"
-             << t[i][0] << " " << t[i][1];
+
         points[i][0] = t[i][0];
         points[i][1] = t[i][1];
     }
@@ -297,7 +293,7 @@ int RightCliping(int e)
             }
         }
     }
-    cout << "k = " << k;
+
     for (int i = 0; i < 10; i++)
     {
         points[i][0] = 0;
@@ -305,8 +301,7 @@ int RightCliping(int e)
     }
     for (int i = 0; i < k; i++)
     {
-        cout << "\n"
-             << t[i][0] << " " << t[i][1];
+
         points[i][0] = t[i][0];
         points[i][1] = t[i][1];
     }
@@ -343,26 +338,30 @@ void goMenu(int value)
 }
 int main(int argc, char **argv)
 {
-    cout << "\n Enter No of edges of polygon ";
+    cout << "\nEnter No of edges of polygon: ";
     cin >> edge;
+    cout << "\nEnter the x,y coordinates of the points:\n";
     for (int i = 0; i < edge; i++)
     {
-        cout << "\n Enter point " << i << " x space y ";
+        cout << "Point " << i + 1 << ": ";
         cin >> points[i][0] >> points[i][1];
     }
     points[edge][0] = points[0][0];
     points[edge][1] = points[0][1];
+
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(640, 480);
     glutInitWindowPosition(200, 200);
     glutCreateWindow("Polygon Clipping");
     init();
+
     glutCreateMenu(goMenu);
     glutAddMenuEntry("Left", 1);
     glutAddMenuEntry("Right", 2);
     glutAddMenuEntry("Top", 3);
     glutAddMenuEntry("Bottom", 4);
+
     glutAttachMenu(GLUT_RIGHT_BUTTON);
     glutDisplayFunc(P_C);
     glutMainLoop();

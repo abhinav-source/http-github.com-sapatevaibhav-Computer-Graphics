@@ -5,7 +5,7 @@
 #include <math.h>
 using namespace std;
 
-int xl = 50, xh = 200, yl = 50, yh = 200;
+int xmin = 50, xmax = 200, ymin = 50, ymax = 200;
 int flag = 0;
 float u1, v1, u2, v2;
 
@@ -26,16 +26,16 @@ void disp() {}
 code get_code(int u, int v)
 {
     code c = {0, 0, 0, 0};
-    if (u < xl)
+    if (u < xmin)
         c.l = 1;
 
-    if (u > xh)
+    if (u > xmax)
         c.r = 1;
 
-    if (v < yl)
+    if (v < ymin)
         c.b = 1;
 
-    if (v > yh)
+    if (v > ymax)
         c.t = 1;
 
     return c;
@@ -100,8 +100,8 @@ void cohen()
         {
             if (c1.l == 1 || c2.l == 1)
             {
-                xi = xl;
-                yi = v1 + m * (xl - u1);
+                xi = xmin;
+                yi = v1 + m * (xmin - u1);
 
                 if (c1.l == 1)
                     flag = 0;
@@ -110,8 +110,8 @@ void cohen()
             }
             else if (c1.r == 1 || c2.r == 1)
             {
-                xi = xh;
-                yi = v1 + m * (xh - u1);
+                xi = xmax;
+                yi = v1 + m * (xmax - u1);
 
                 if (c1.r == 1)
                     flag = 0;
@@ -120,8 +120,8 @@ void cohen()
             }
             else if (c1.b == 1 || c2.b == 1)
             {
-                xi = u1 + ((1 / m) * (yl - v1));
-                yi = yl;
+                xi = u1 + ((1 / m) * (ymin - v1));
+                yi = ymin;
 
                 if (c1.b == 1)
                     flag = 0;
@@ -130,8 +130,8 @@ void cohen()
             }
             else if (c1.t == 1 || c2.t == 1)
             {
-                xi = u1 + ((1 / m) * (yh - v1));
-                yi = yh;
+                xi = u1 + ((1 / m) * (ymax - v1));
+                yi = ymax;
 
                 if (c1.t == 1)
                     flag = 0;

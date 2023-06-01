@@ -61,12 +61,10 @@ void scale()
     glEnd();
     glFlush();
 
-    cout << "\n\tIn Scaling whole screen is 1st Qudrant \n";
     int sx, sy;
-    cout << "\t Enter sx, sy \n";
+    cout << "Enter scale x & scale y factors: ";
     cin >> sx >> sy;
 
-    // Scale the points
     for (int i = 0; i < edge; i++)
     {
         xpoint[i] = (xpoint[i] - 320) * sx;

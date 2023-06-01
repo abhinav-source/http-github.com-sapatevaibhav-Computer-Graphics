@@ -52,7 +52,7 @@ void Flood()
     glClear(GL_COLOR_BUFFER_BIT);
 
     glBegin(GL_LINES);
-    glColor3f(1, 0, 0);
+    glColor3f(1, 0, 1);
     glVertex2i(200, 150);
     glVertex2i(300, 300);
     glEnd();
@@ -89,7 +89,7 @@ void goMenu(int value)
     case 3:
         R = 1;
         G = 0;
-        B = 1;
+        B = 0;
         break;
     }
     glutPostRedisplay();
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
     glutCreateMenu(goMenu);
     glutAddMenuEntry("Color 1 Green", 1);
     glutAddMenuEntry("Color 2 Yellow", 2);
-    glutAddMenuEntry("Color 3 Pink", 3);
+    glutAddMenuEntry("Color 3 Red", 3);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 
     glutDisplayFunc(Flood);
