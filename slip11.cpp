@@ -3,14 +3,12 @@
 #include <GL/glut.h>
 #include <math.h>
 
-// Control points for the Bezier curve
 GLfloat controlPoints[4][2] = {
     {100.0, 100.0},
     {150.0, 200.0},
     {250.0, 200.0},
     {300.0, 100.0}};
 
-// Function to calculate the blending function value for the Bezier curve
 GLfloat blendingFunction(int i, int n, GLfloat t)
 {
     GLfloat coefficient = 1.0;
@@ -21,7 +19,6 @@ GLfloat blendingFunction(int i, int n, GLfloat t)
     return coefficient * pow(t, i) * pow(1 - t, n - i);
 }
 
-// Function to draw the Bezier curve
 void drawBezierCurve()
 {
     glBegin(GL_LINE_STRIP);
@@ -39,7 +36,6 @@ void drawBezierCurve()
     glEnd();
 }
 
-// Function to display the scene
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -55,7 +51,6 @@ void display()
     glutSwapBuffers();
 }
 
-// Function to handle window resizing
 void reshape(int width, int height)
 {
     glViewport(0, 0, width, height);
