@@ -115,7 +115,7 @@ void reflection()
 
 void Draw()
 {
-    if (ch == 2 || ch == 3 || ch == 4)
+    if (ch == 2 || ch == 3)
     {
         glColor3f(1.0, 0, 0);
         glBegin(GL_LINES);
@@ -168,7 +168,7 @@ int main(int argc, char **argv)
         cin >> edge;
 
         int xpointnew, ypointnew;
-        cout << " Enter " << edge << " point of polygon \n";
+        cout << "Enter " << edge << " point of polygon \n";
 
         for (int i = 0; i < edge; i++)
         {
